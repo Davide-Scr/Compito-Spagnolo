@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Baloncesto 2025: La Pasión del Juego</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Estilos Globales */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+    a { text-decoration: none; color: inherit; }
+    
+    /* Barra de Navegación */
+    .navbar {
+      background: linear-gradient(90deg, #1f1f1f 0%, #272727 100%);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #ff4500;
+    }
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      margin-right: 15px;
+      color: #f1f1f1;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #ff4500;
+    }
+    
+    /* Sección Hero */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1546519638-68e109498ffc?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2ZvbmRvJTIwYmFza2V0fGVufDB8fDB8fHww') center/cover no-repeat;
+      position: relative;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      animation: fadeIn 2s;
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      z-index: 1;
+      animation: slideUp 1.5s;
+    }
+    .hero-content h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+    .hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+    .btn-primary {
+      background-color: #ff4500;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #e03e00;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    /* Estilos de Sección */
+    section {
+      padding: 60px 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #ff4500;
+    }
+    .section-content {
+      background: #1f1f1f;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+      max-width: 800px;
+      margin: auto;
+    }
+    .section-content p, .section-content ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    /* Estilos del Carrusel */
+    .player-card {
+      cursor: pointer;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .player-card img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+      transition: transform 0.3s ease;
+    }
+    .player-card img:hover {
+      transform: scale(1.05);
+    }
+    .player-name {
+      margin-top: 15px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #ff4500;
+    }
+    
+    /* Estilos de Modal */
+    .modal-content {
+      background: #1f1f1f;
+      color: #f1f1f1;
+      border: none;
+      border-radius: 10px;
+    }
+    .modal-header {
+      border-bottom: 1px solid #444;
+    }
+    .btn-close {
+      filter: invert(1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de Navegación -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">Baloncesto 2025</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
+              aria-controls="navbarContent" aria-expanded="false" aria-label="Alternar navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#que-es">Sobre el Baloncesto</a></li>
+          <li class="nav-item"><a class="nav-link" href="#storia">Historia y Evolución</a></li>
+          <li class="nav-item"><a class="nav-link" href="#innovaciones">Últimas Innovaciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="#reglas">Reglas y Formato</a></li>
+          <li class="nav-item"><a class="nav-link" href="#jugadores">Jugadores</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sección Hero -->
+  <section id="inicio" class="hero">
+    <div class="container hero-content">
+      <h1>La Pasión del Baloncesto</h1>
+      <p>Vive la evolución y emoción del juego en 2025</p>
+      <a href="#que-es" class="btn btn-primary btn-lg">Explorar</a>
+    </div>
+  </section>
+
+  <!-- Sobre el Baloncesto -->
+  <section id="que-es">
+    <div class="container">
+      <h2 class="section-title">Sobre el Baloncesto</h2>
+      <div class="section-content">
+        <p>El baloncesto es un deporte de equipo dinámico en el que dos equipos de cinco jugadores compiten para anotar lanzando un balón a través del aro del oponente. Este deporte se ha convertido en un fenómeno global, combinando atletismo con estrategia e innovación.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Historia y Evolución -->
+  <section id="storia">
+    <div class="container">
+      <h2 class="section-title">Historia y Evolución</h2>
+      <div class="section-content">
+        <p>El baloncesto fue inventado en 1891 por el Dr. James Naismith como un deporte menos propenso a lesiones que el fútbol. A lo largo de las décadas, se ha transformado en un espectáculo global con hitos importantes, entre ellos:</p>
+        <ul>
+          <li>La introducción del reloj de tiro en los años 50.</li>
+          <li>El surgimiento de leyendas como Michael Jordan, quien transformó el juego.</li>
+          <li>La globalización de la NBA y la aparición de estrellas internacionales.</li>
+        </ul>
+        <p>Hoy en día, el baloncesto sigue evolucionando con nuevas estrategias e innovaciones tecnológicas que están transformando el juego.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Últimas Innovaciones -->
+  <section id="innovaciones">
+    <div class="container">
+      <h2 class="section-title">Últimas Innovaciones</h2>
+      <div class="section-content">
+        <p>En 2025, el baloncesto es más que un deporte: es la intersección entre tecnología y atletismo. Las innovaciones incluyen:</p>
+        <ul>
+          <li>Análisis de rendimiento avanzados y tecnología vestible.</li>
+          <li>Módulos de entrenamiento en realidad virtual para simulaciones de juego realistas.</li>
+          <li>Experiencias de transmisión inmersivas para los aficionados.</li>
+        </ul>
+        <p>Estos avances están transformando la forma en que los equipos se entrenan y cómo los aficionados viven el juego.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reglas y Formato -->
+  <section id="reglas">
+    <div class="container">
+      <h2 class="section-title">Reglas y Formato</h2>
+      <div class="section-content">
+        <ul>
+          <li>Los partidos se dividen en cuatro cuartos de 10 o 12 minutos cada uno.</li>
+          <li>El objetivo principal es anotar lanzando el balón a través del aro del oponente.</li>
+          <li>La repetición instantánea y las tecnologías avanzadas de arbitraje son ahora estándar.</li>
+          <li>La seguridad de los jugadores y el juego limpio siguen siendo prioridades principales.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carrusel de Jugadores -->
+  <section id="jugadores">
+    <div class="container">
+      <h2 class="section-title">Jugadores Destacados</h2>
+      <div class="section-content">
+        <div id="playersCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <!-- Primera diapositiva con 3 jugadores -->
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="player-card" data-bs-toggle="modal" data-bs-target="#modalMJ">
+                    <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/893.png" alt="Michael Jordan" class="img-fluid">
+                    <div class="player-name">Michael Jordan</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="player-card" data-bs-toggle="modal" data-bs-target="#modalLJ">
+                    <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/1966.png&w=350&h=254" alt="LeBron James" class="img-fluid">
+                    <div class="player-name">LeBron James</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="player-card" data-bs-toggle="modal" data-bs-target="#modalKB">
+                    <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/977.png" alt="Kobe Bryant" class="img-fluid">
+                    <div class="player-name">Kobe Bryant</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Segunda diapositiva con 3 jugadores -->
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="player-card" data-bs-toggle="modal" data-bs-target="#modalCurry">
+                    <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/201939.png" alt="Stephen Curry" class="img-fluid">
+                    <div class="player-name">Stephen Curry</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="player-card" data-bs-toggle="modal" data-bs-target="#modalDurant">
+                    <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/201142.png" alt="Kevin Durant" class="img-fluid">
+                    <div class="player-name">Kevin Durant</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="player-card" data-bs-toggle="modal" data-bs-target="#modalWade">
+                    <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/2548.png" alt="Dwyane Wade" class="img-fluid">
+                    <div class="player-name">Dwyane Wade</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#playersCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#playersCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Modal: Michael Jordan -->
+  <div class="modal fade" id="modalMJ" tabindex="-1" aria-labelledby="modalMJLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modalMJLabel">Michael Jordan</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Posición:</strong> Escolta</p>
+            <p><strong>Equipos:</strong> Chicago Bulls, Washington Wizards</p>
+            <p><strong>Logros:</strong> 6 campeonatos de la NBA, 5 premios MVP, 14 veces All-Star</p>
+            <p><strong>Legado:</strong> Considerado ampliamente como el mejor jugador de baloncesto de todos los tiempos, Jordan revolucionó el juego con su habilidad, espíritu competitivo y marca icónica.</p>
+        </div>    
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal: LeBron James -->
+  <div class="modal fade" id="modalLJ" tabindex="-1" aria-labelledby="modalLJLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLJLabel">LeBron James</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+          <div class="modal-body">
+            <p><strong>Posición:</strong> Alero</p>
+            <p><strong>Equipos:</strong> Cleveland Cavaliers, Miami Heat, Los Angeles Lakers</p>
+            <p><strong>Logros:</strong> 4 campeonatos de la NBA, 4 premios MVP, 19 veces All-Star (a partir de 2023)</p>
+            <p><strong>Legado:</strong> Conocido por su versatilidad, liderazgo y longevidad, LeBron ha redefinido lo que significa ser una superestrella del baloncesto moderno.</p>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal: Kobe Bryant -->
+  <div class="modal fade" id="modalKB" tabindex="-1" aria-labelledby="modalKBLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalKBLabel">Kobe Bryant</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Posición:</strong> Escolta</p>
+            <p><strong>Equipo:</strong> Los Angeles Lakers</p>
+            <p><strong>Logros:</strong> 5 campeonatos de la NBA, 1 premio MVP, 18 veces All-Star</p>
+            <p><strong>Legado:</strong> "The Black Mamba" era reconocido por su ética de trabajo incansable, pasión por el juego y capacidad anotadora. Su influencia sigue inspirando a los aficionados en todo el mundo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal: Stephen Curry -->
+  <div class="modal fade" id="modalCurry" tabindex="-1" aria-labelledby="modalCurryLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalCurryLabel">Stephen Curry</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+          <div class="modal-body">
+            <p><strong>Posición:</strong> Base</p>
+            <p><strong>Equipos:</strong> Golden State Warriors, Charlotte Hornets</p>
+            <p><strong>Logros:</strong> 4 campeonatos de la NBA, 2 premios MVP, 8 veces All-Star (a partir de 2023)</p>
+            <p><strong>Legado:</strong> Revolucionó el juego con su tiro de tres puntos, haciendo que el alcance y la precisión sean esenciales para los bases modernos.</p>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal: Kevin Durant -->
+  <div class="modal fade" id="modalDurant" tabindex="-1" aria-labelledby="modalDurantLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalDurantLabel">Kevin Durant</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+          <div class="modal-body">
+            <p><strong>Posición:</strong> Alero</p>
+            <p><strong>Equipos:</strong> Seattle SuperSonics, Oklahoma City Thunder, Golden State Warriors, Brooklyn Nets</p>
+            <p><strong>Logros:</strong> 2 campeonatos de la NBA, 1 premio MVP, 12 veces All-Star (a partir de 2023)</p>
+            <p><strong>Legado:</strong> Conocido por su capacidad anotadora y versatilidad, Durant es uno de los jugadores más talentosos en la historia de la NBA.</p>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal: Dwyane Wade -->
+  <div class="modal fade" id="modalWade" tabindex="-1" aria-labelledby="modalWadeLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalWadeLabel">Dwyane Wade</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+          <div class="modal-body">
+            <p><strong>Posición:</strong> Escolta</p>
+            <p><strong>Equipos:</strong> Miami Heat, Chicago Bulls, Cleveland Cavaliers</p>
+            <p><strong>Logros:</strong> 3 campeonatos de la NBA, 1 MVP de las Finales, 13 veces All-Star</p>
+            <p><strong>Legado:</strong> Favorito de los aficionados, conocido por su atletismo explosivo y actuaciones decisivas, Wade dejó una marca imborrable en la NBA.</p>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
